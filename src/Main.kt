@@ -3,7 +3,7 @@
  * Programming Project for NCEA Level 2, Standard 91896
  * ---------------------------------------------------------------------
  * Project Name:   PROJECT NAME HERE
- * Project Author: PROJECT AUTHOR HERE
+ * Project Author: Maia Wingate
  * GitHub Repo:    GITHUB REPO URL HERE
  * ---------------------------------------------------------------------
  * Notes:
