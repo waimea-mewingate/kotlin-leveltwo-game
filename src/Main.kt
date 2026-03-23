@@ -19,6 +19,7 @@ fun main() {
         gameBoard.add("")
     }
     //Welcome screen and counter setup on the board
+    setupCounters()
     println("Welcome to Pinned!")
     println("This is a two-player game. Choose who is who now.")
     showGameBoard()
@@ -26,9 +27,20 @@ fun main() {
     val whoStarts = (1..2).random()
     println("Starting Player: Player $whoStarts")
 
+
 }
 
 fun showGameBoard() {
+    println("╒═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╕")
+    for (i in 0..15) {
+        print("│"); print(gameBoard[i].padEnd(3))
+    }
+    println("│")
+    println("╘═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╛")
+    println(" 1   2   3   4   5   6   7   8   9   10  11  12  13  14  15  16")
+}
+
+fun setupCounters() {
     while (true) {
         //Adding Black Counter
         for (i in 0..gameBoard.size) {
@@ -39,18 +51,18 @@ fun showGameBoard() {
         var counterCount = 0
         for (i in 0..gameBoard.size) {
             val randomIndex = gameBoard.indices.random()
-            if (gameBoard[randomIndex] == "") gameBoard[randomIndex] = " ●"; counterCount++
+            if (gameBoard[randomIndex] == "") {
+                gameBoard[randomIndex] = " ●"
+                counterCount++
+            }
             if (counterCount == 4) {
                 break
             }
         }
         break
     }
-    println("╒═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╕")
-    for (i in 0..15) {
-        print("│"); print(gameBoard[i].padEnd(3))
-    }
-    println("│")
-    println("╘═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╛")
-    println(" 1   2   3   4   5   6   7   8   9   10  11  12  13  14  15  16")
+}
+
+fun moveOrRemove() {
+    
 }
