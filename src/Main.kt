@@ -12,6 +12,7 @@
  */
 
 val gameBoard = mutableListOf<String>()
+val playerNames = mutableListOf<String>()
 
 fun main() {
     //Filling the list
@@ -23,9 +24,14 @@ fun main() {
     println("Welcome to Pinned!")
     println("This is a two-player game. Choose who is who now.")
     showGameBoard()
-    // Googled how to do a random number
-    val whoStarts = (1..2).random()
-    println("Starting Player: Player $whoStarts")
+    choosePlayers()
+    for (players in playerNames) {
+        println("Welcome, $players")
+    }
+    val randomNumber = (1..2).random()
+    println("Starting Player: Player ${playerNames[randomNumber]}")
+
+
 
 
 }
@@ -64,5 +70,41 @@ fun setupCounters() {
 }
 
 fun moveOrRemove() {
-    
+    //UNFINISHEDDDDDDDD
+    //still working out how this works- started something and then realised it goes the wrong way
+    while (true)
+        if (gameBoard[0] != "") {
+            print("M".bold().green()); println("ove")
+            print("R".bold().green()); println("emove Counter")
+            val turnChoice = readlnOrNull()
+            if (turnChoice != null && turnChoice in "MmRr") {
+                break
+            }
+        }
+         else {
+            println("Moving is the only option: Enter square with counter to move:")
+            val squareChosen = readlnOrNull()?.toIntOrNull()
+            if (squareChosen != null && gameBoard[squareChosen - 1] != "") {
+                println("Enter amount of squares to move: ")
+                val squaresMoving = readlnOrNull()?.toIntOrNull()
+                if (squaresMoving != null && gameBoard[squareChosen] != "") {}
+            }
+        }
+    }
+
+
+fun choosePlayers(){
+    while (true) {
+        print("Enter First Player Name: ")
+        println()
+        val playerOne = readlnOrNull()
+        print("Enter Second Player Name: ")
+        println()
+        val playerTwo = readlnOrNull()
+        if (playerOne != null && playerTwo != null) {
+            playerNames.add(playerOne)
+            playerNames.add(playerTwo)
+            break
+        }
+    }
 }
