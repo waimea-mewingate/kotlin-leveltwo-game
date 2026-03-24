@@ -12,7 +12,7 @@ The game functions correctly and meets the specification:
 - [ ] The game is **playable**
 - [ ] The **instructions** for the game are available in-game
 - [ ] **Two players** can play
-- [ ] Player **names** are used to identify each player
+- [x] Player **names** are used to identify each player
 - [ ] Players **take turns** to play
 - [ ] Players provides **input data** to the game (e.g. moves to make)
 - [ ] The **current status** of the game is shown after each play

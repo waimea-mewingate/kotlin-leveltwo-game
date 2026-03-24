@@ -21,7 +21,7 @@ fun main() {
     }
     //Welcome screen and counter setup on the board
     setupCounters()
-    println("Welcome to Pinned!")
+    println("Welcome to Pinned!".bold())
     println("This is a two-player game. Choose who is who now.")
     showGameBoard()
     choosePlayers()
@@ -29,20 +29,17 @@ fun main() {
         println("Welcome, $players")
     }
     val randomNumber = (1..2).random()
-    println("Starting Player: Player ${playerNames[randomNumber]}")
-
-
-
+    print("Starting Player: "); println(playerNames[randomNumber].bold())
 
 }
 
 fun showGameBoard() {
-    println("╒═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╕")
+    println("╒═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╕".green())
     for (i in 0..15) {
-        print("│"); print(gameBoard[i].padEnd(3))
+        print("│".green()); print(gameBoard[i].padEnd(3))
     }
-    println("│")
-    println("╘═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╛")
+    println("│".green())
+    println("╘═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╛".green())
     println(" 1   2   3   4   5   6   7   8   9   10  11  12  13  14  15  16")
 }
 
@@ -71,7 +68,7 @@ fun setupCounters() {
 
 fun moveOrRemove() {
     //UNFINISHEDDDDDDDD
-    //still working out how this works- started something and then realised it goes the wrong way
+    //still working out how this works - started something and then realised it goes the wrong way
     while (true)
         if (gameBoard[0] != "") {
             print("M".bold().green()); println("ove")
