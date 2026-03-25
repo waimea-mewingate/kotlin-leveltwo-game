@@ -29,7 +29,8 @@ fun main() {
         println("Welcome, $players")
     }
     val randomNumber = (1..2).random()
-    print("Starting Player: "); println(playerNames[randomNumber].bold())
+    print("Starting Player: ".yellow()); println(playerNames[randomNumber-1].bold())
+    moveOrRemove()
 
 }
 
@@ -69,25 +70,25 @@ fun setupCounters() {
 fun moveOrRemove() {
     //UNFINISHEDDDDDDDD
     //still working out how this works - started something and then realised it goes the wrong way
-    while (true)
-        if (gameBoard[0] != "") {
-            print("M".bold().green()); println("ove")
-            print("R".bold().green()); println("emove Counter")
-            val turnChoice = readlnOrNull()
-            if (turnChoice != null && turnChoice in "MmRr") {
-                break
+    while (true) {
+        println("Choose an Action".red().bold())
+        print("M".bold().green())
+        println("ove")
+        print("R".bold().green()); println("emove Counter")
+        print("Choice: ")
+        println()
+        val turnChoice = readlnOrNull()
+        if (turnChoice != null && turnChoice in "MmRr") {
+            when (turnChoice) {
+                "r", "R" -> when (gameBoard[0]) {
+                    " ○" -> println()
+                }
             }
         }
-         else {
-            println("Moving is the only option: Enter square with counter to move:")
-            val squareChosen = readlnOrNull()?.toIntOrNull()
-            if (squareChosen != null && gameBoard[squareChosen - 1] != "") {
-                println("Enter amount of squares to move: ")
-                val squaresMoving = readlnOrNull()?.toIntOrNull()
-                if (squaresMoving != null && gameBoard[squareChosen] != "") {}
-            }
-        }
+        println("Sorry, Invalid Choice")
     }
+
+}
 
 
 fun choosePlayers(){
