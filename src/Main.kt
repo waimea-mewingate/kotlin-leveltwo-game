@@ -120,27 +120,42 @@ fun moveOrRemove() {
             }
         }
         if (action == "Move") {
-            println("Enter the Number of the Square You Want To Move From:")
-            var moveFrom = Int
-            while (true) {
-                var chosenSquare = readlnOrNull()?.toIntOrNull()
-                if (chosenSquare != null && chosenSquare in (1..16) && gameBoard[chosenSquare - 1] != "") {
-                    chosenSquare  = moveFrom
-                    break
+            var movingFrom: Int
+                while (true) {
+                    println("Enter the Number of the Square You Want To Move From:")
+                    val chosenSquare = readlnOrNull()?.toIntOrNull()
+                    if (chosenSquare != null && chosenSquare in (1..16) && gameBoard[chosenSquare - 1] != "") {
+                        println("Moving From Square $chosenSquare")
+                        movingFrom = chosenSquare
+                        break
+                    }
+                    println("Invalid Input".red())
                 }
-            }
-            println("Moving From Square $moveFrom")
             while (true) {
                 print("How many squares to the Left? ")
-                var numberToMove = readlnOrNull()?.toIntOrNull()
-                if (numberToMove != null && numberToMove in (1..16)){
-                    repeat(numberToMove) {
-                    }
-                }
+                val numberToMove = readlnOrNull()?.toIntOrNull()
+                if (numberToMove != null && numberToMove in (1..16)) break
             }
-        }
-    }
-}
+
+                        //------------------------------------------------------------
+                        // THIS DOESN'T WORK RN I CAN't KEEP TRACK OF IT  (REDO? )
+                        //-----------------------------------------------------------
+//                        movingFrom = if (gameBoard[movingFrom - 1] == "") numberToMove?.minus(1)!! else null
+//                    if (numberToMove != null) {
+//                        gameBoard[movingFrom - 1] = when (gameBoard[numberToMove - 1])
+
+                    //-------------------------------------------------
+                    //  ERRORS AND STUFF TO ADD WHEN I KNOW WHAT I'M DOING
+                    //------------------------------------------------
+
+                //  && gameBoard[movingFrom] = " ●") {
+//                            gameBoard[numberToMove!!] = " ●"
+//                            gameBoard[movingFrom] = ""
+
+//                            if (gameBoard[movingFrom] = " ○") {
+//                                gameBoard[movingFrom] = ""
+//                                gameBoard[numberToMove!!] = " ○"
+
 
 fun choosePlayers(){
     while (true) {
