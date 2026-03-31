@@ -16,25 +16,32 @@ val playerNames = mutableListOf<String>()
 var gameWon = false
 var firstTurn = true
 fun main() {
-    //Filling the list
-    repeat(16) {
-        gameBoard.add("")
-    }
+
     //Welcome screen and counter setup on the board
-    setupCounters()
+    setupGame()
     println("Welcome to Pinned!".bold())
     println("This is a two-player game. Choose who is who now.")
-    showGameBoard()
     choosePlayers()
 
-    val randomNumber = (1..2).random()
-    print("Starting Player: ".yellow()); println(playerNames[randomNumber-1].bold())
+    var currentPlayer = (0..1).random()
 
     while (true) {
-        if (gameWon) break
+        showGameBoard()
+        print(playerNames[currentPlayer].bold()); println(", it's your go...".yellow())
         moveOrRemove()
+        if (gameWon) break
+
+        currentPlayer = if (currentPlayer == 1) 0 else 1
     }
-    println("We have a Winner!")
+
+    println("${playerNames[currentPlayer]} has Won!")
+//    while (true) {
+//        println("End of Game. Play Again? [Y/N]")
+//        val playAgain = readlnOrNull()
+//        when (playAgain) {
+//
+//        }
+//    }
 }
 
 fun showGameBoard() {
@@ -47,7 +54,11 @@ fun showGameBoard() {
     println(" 1   2   3   4   5   6   7   8   9   10  11  12  13  14  15  16")
 }
 
-fun setupCounters() {
+fun setupGame() {
+    //Filling the list
+    repeat(16) {
+        gameBoard.add("")
+    }
     while (true) {
         //Adding Black Counter
         for (i in 0..gameBoard.size) {
@@ -110,6 +121,23 @@ fun moveOrRemove() {
         }
         if (action == "Move") {
             println("Enter the Number of the Square You Want To Move From:")
+            var moveFrom = Int
+            while (true) {
+                var chosenSquare = readlnOrNull()?.toIntOrNull()
+                if (chosenSquare != null && chosenSquare in (1..16) && gameBoard[chosenSquare - 1] != "") {
+                    chosenSquare  = moveFrom
+                    break
+                }
+            }
+            println("Moving From Square $moveFrom")
+            while (true) {
+                print("How many squares to the Left? ")
+                var numberToMove = readlnOrNull()?.toIntOrNull()
+                if (numberToMove != null && numberToMove in (1..16)){
+                    repeat(numberToMove) {
+                    }
+                }
+            }
         }
     }
 }
