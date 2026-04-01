@@ -1,4 +1,4 @@
-# PROJECT NAME HERE
+# Level 2 Game - Pinned
 
 Maia Wingate
 

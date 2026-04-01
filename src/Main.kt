@@ -14,7 +14,6 @@
 val gameBoard = mutableListOf<String>()
 val playerNames = mutableListOf<String>()
 var gameWon = false
-var firstTurn = true
 fun main() {
 
     //Welcome screen and counter setup on the board
@@ -111,6 +110,7 @@ fun moveOrRemove() {
                     gameBoard[0] = ""
                     showGameBoard()
                 }
+
                 " ○" -> {
                     gameBoard[0] = ""
                     showGameBoard()
@@ -121,43 +121,45 @@ fun moveOrRemove() {
         }
         if (action == "Move") {
             var movingFrom: Int
-                while (true) {
-                    println("Enter the Number of the Square You Want To Move From:")
-                    val chosenSquare = readlnOrNull()?.toIntOrNull()
-                    if (chosenSquare != null && chosenSquare in (1..16) && gameBoard[chosenSquare - 1] != "") {
-                        println("Moving From Square $chosenSquare")
-                        movingFrom = chosenSquare
-                        break
-                    }
-                    println("Invalid Input".red())
-                }
             while (true) {
-                print("How many squares to the Left? ")
-                val numberToMove = readlnOrNull()?.toIntOrNull()
-                if (numberToMove != null && numberToMove in (1..16)) break
+                println("Enter the Number of the Square You Want To Move From:")
+                val chosenSquare = readlnOrNull()?.toIntOrNull()
+                if (chosenSquare != null && chosenSquare in (1..16) && gameBoard[chosenSquare - 1] != "") {
+                    println("Moving From Square $chosenSquare")
+                    movingFrom = chosenSquare
+                    break
+                }
+                println("Invalid Input".red())
             }
 
-                        //------------------------------------------------------------
-                        // THIS DOESN'T WORK RN I CAN't KEEP TRACK OF IT  (REDO? )
-                        //-----------------------------------------------------------
-//                        movingFrom = if (gameBoard[movingFrom - 1] == "") numberToMove?.minus(1)!! else null
-//                    if (numberToMove != null) {
-//                        gameBoard[movingFrom - 1] = when (gameBoard[numberToMove - 1])
+            var numberToMove: Int?
+            while (true) {
+                while (true) {
+                    print("How many squares to the Left? ")
+                    numberToMove = readlnOrNull()?.toIntOrNull()
+                    if (numberToMove != null && numberToMove in (1..16)) break
+                    println("Invalid Input".red())
+                }
+                var emptyTester: Int? = 2
+                if (emptyTester != null) {
+                    repeat(numberToMove!!) {
+                        if (gameBoard[movingFrom - emptyTester!!] == "") emptyTester =
+                            emptyTester!! + 1 else emptyTester = null
+                    }
+                }
+                if (emptyTester != null && gameBoard[movingFrom - emptyTester!!] == gameBoard[movingFrom - numberToMove!!]) break
 
-                    //-------------------------------------------------
-                    //  ERRORS AND STUFF TO ADD WHEN I KNOW WHAT I'M DOING
-                    //------------------------------------------------
-
-                //  && gameBoard[movingFrom] = " ●") {
-//                            gameBoard[numberToMove!!] = " ●"
-//                            gameBoard[movingFrom] = ""
-
-//                            if (gameBoard[movingFrom] = " ○") {
-//                                gameBoard[movingFrom] = ""
-//                                gameBoard[numberToMove!!] = " ○"
+            }
+            if (gameBoard[movingFrom - 1] == " ●") {
+                gameBoard[movingFrom - numberToMove!! - 1] = " ●"
+            } else if (gameBoard[movingFrom - 1] == " ○")
+        //I"M SORRY - IT HURTS MY BRAIN TOO, FUTURE SELF
+        }
+    }
+}
 
 
-fun choosePlayers(){
+fun choosePlayers() {
     while (true) {
         print("Enter First Player Name: ")
         println()
@@ -179,3 +181,4 @@ fun choosePlayers(){
         }
     }
 }
+
