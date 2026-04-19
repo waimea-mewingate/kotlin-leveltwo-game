@@ -84,6 +84,7 @@ fun moveOrRemove() {
     var action: String?
     while (true) {
         println("Choose an Action".red().bold())
+        println("(Counters can only be removed from square 1)")
         print("M".bold().green())
         println("ove")
         print("R".bold().green()); println("emove Counter")
@@ -109,6 +110,8 @@ fun moveOrRemove() {
                 " ●" -> {
                     gameBoard[0] = ""
                     showGameBoard()
+                    println("Counter Removed!")
+                    break
                 }
 
                 " ○" -> {
@@ -124,36 +127,31 @@ fun moveOrRemove() {
             while (true) {
                 println("Enter the Number of the Square You Want To Move From:")
                 val chosenSquare = readlnOrNull()?.toIntOrNull()
-                if (chosenSquare != null && chosenSquare in (1..16) && gameBoard[chosenSquare - 1] != "") {
+                if (chosenSquare != null && chosenSquare in (1..16) && gameBoard[chosenSquare - 1] != "" && gameBoard[chosenSquare - 2] == "") {
                     println("Moving From Square $chosenSquare")
-                    movingFrom = chosenSquare
+                    movingFrom = chosenSquare -1
                     break
                 }
                 println("Invalid Input".red())
             }
-
-            var numberToMove: Int?
+            println("Moving 1 Square Left...")
             while (true) {
-                while (true) {
-                    print("How many squares to the Left? ")
-                    numberToMove = readlnOrNull()?.toIntOrNull()
-                    if (numberToMove != null && numberToMove in (1..16)) break
-                    println("Invalid Input".red())
-                }
-                var emptyTester: Int? = 2
-                if (emptyTester != null) {
-                    repeat(numberToMove!!) {
-                        if (gameBoard[movingFrom - emptyTester!!] == "") emptyTester =
-                            emptyTester!! + 1 else emptyTester = null
-                    }
-                }
-                if (emptyTester != null && gameBoard[movingFrom - emptyTester!!] == gameBoard[movingFrom - numberToMove!!]) break
+                var temp = gameBoard[movingFrom - 1]
+                gameBoard[movingFrom - 1] = gameBoard[movingFrom]
+                gameBoard[movingFrom] = temp
+                showGameBoard()
+                if (movingFrom == 1) break
 
+                if (gameBoard[movingFrom - 2] == "") {
+                    println("Move another square? Y/N")
+                    val moveAgain = readlnOrNull()
+                    when (moveAgain) {
+                        "y", "Y" -> movingFrom = movingFrom - 1
+                        "N", "n" -> break
+                    }
+                } else break
             }
-            if (gameBoard[movingFrom - 1] == " ●") {
-                gameBoard[movingFrom - numberToMove!! - 1] = " ●"
-            } else if (gameBoard[movingFrom - 1] == " ○")
-        //I"M SORRY - IT HURTS MY BRAIN TOO, FUTURE SELF
+            break
         }
     }
 }
