@@ -12,7 +12,7 @@ Terminology:
 
 ## Example Test Name
 
-Example test description. Example test description. Example test description. Example test description. Example test description. Example test description.
+Testing the game functionality. 
 
 ### Test Data To Use
 
@@ -20,7 +20,7 @@ Details of test data and reasons for selection. Details of test data and reasons
 
 ### Expected Test Result
 
-Statement detailing what should happen. Statement detailing what should happen. Statement detailing what should happen. Statement detailing what should happen. 
+The game should hopefully run through to the end, with players either moving or removing a counter. The turn should then switch, and play continued until the "black" counter (" ○") is removed from square 1. The program should then end normally. 
 
 ---
 
