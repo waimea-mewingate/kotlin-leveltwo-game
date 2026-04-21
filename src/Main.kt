@@ -36,13 +36,14 @@ fun main() {
     println("Welcome to Pinned!".bold())
     println("This is a two-player game. Choose who is who now.")
     choosePlayers()
+    showGameBoard()
 
     //Starting player.
     var currentPlayer = (0..1).random()
 
     //Taking turns (main game body). This should loop until win condition is met
     while (true) {
-        showGameBoard()
+        // The game board is shown when performing a turn, so I have not put showGameBoard here. 
         print(playerNames[currentPlayer].bold()); println(", it's your go...".yellow())
         moveOrRemove()
         //Check for win!
@@ -106,15 +107,15 @@ fun moveOrRemove() {
     var action: String?
     while (true) {
         // Asks players to choose an action
+        showGameBoard()
         println("Choose an Action".red().bold())
         println("(Counters can only be removed from square 1)")
         print("M".bold().green())
         println("ove. You can move any counter any number of squares to the left, provided the path is empty. ")
         print("R".bold().green()); println("emove Counter. This removes a counter from square 1, and can only be chosen when that square is occupied.")
         println("Removing the black counter '○' wins you the game! ")
-        print("Choice: ")
+        print("Choice (M/R): ")
         val turnChoice = readln()
-        println()
 
         action = when (turnChoice) {
             "M", "m" -> "Move"
@@ -155,7 +156,8 @@ fun moveOrRemove() {
             var movingFrom: Int
             while (true) {
                 // User input for targeting counters - they enter the square number containing their chosen counter.
-                println("Enter the Number of the Square You Want To Move From:")
+                showGameBoard()
+                print("Enter the Number of the Square You Want To Move From: ")
                 val chosenSquare = readlnOrNull()?.toIntOrNull()
 
                 // There are so many conditions to validate this - the input needs to be a square on the board containing a counter and there needs to be a valid square to move to
@@ -183,8 +185,13 @@ fun moveOrRemove() {
 
                 if (gameBoard[movingFrom - 2] == "") {
                     // If possible to move left again, the question is posed until the user decides or the move is impossible.
-                    println("Move another square? Y/N")
-                    val moveAgain = readlnOrNull()
+                    var moveAgain: String?
+                    while (true) {
+                        println("Move another square? Y/N")
+                        moveAgain = readlnOrNull()
+                        if (moveAgain != null && moveAgain in "YyNn") break
+                        println("Invalid Input")
+                    }
                     when (moveAgain) {
                         "y", "Y" -> movingFrom = movingFrom - 1
                         // The above line can be done with a '-=' says the IntelliJ suggestion. Neat trick! Helpful to keep in mind for future reference.
