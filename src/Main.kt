@@ -33,7 +33,7 @@ var gameWon = false
 fun main() {
     //Welcome screen and counter setup on the board. Runs once.
     setupGame()
-    println("Welcome to Pinned!".bold())
+    println("Welcome to Pinned!".bold().yellow())
     println("This is a two-player game. Choose who is who now.")
     choosePlayers()
     showGameBoard()
@@ -43,7 +43,7 @@ fun main() {
 
     //Taking turns (main game body). This should loop until win condition is met
     while (true) {
-        // The game board is shown when performing a turn, so I have not put showGameBoard here. 
+        // The game board is shown when performing a turn, so I have not put showGameBoard here.
         print(playerNames[currentPlayer].bold()); println(", it's your go...".yellow())
         moveOrRemove()
         //Check for win!
@@ -108,7 +108,7 @@ fun moveOrRemove() {
     while (true) {
         // Asks players to choose an action
         showGameBoard()
-        println("Choose an Action".red().bold())
+        println("Choose an Action".magenta().bold())
         println("(Counters can only be removed from square 1)")
         print("M".bold().green())
         println("ove. You can move any counter any number of squares to the left, provided the path is empty. ")
@@ -125,7 +125,7 @@ fun moveOrRemove() {
         if (action == "Remove" && gameBoard[0] == "") action = null
         if (action != null) break
 
-        println("Sorry, Invalid Choice: Removing from square 1 may be impossible".red())
+        println("Sorry, Invalid or Unavailable Choice".red())
 
     }
     // Once an action is successfully chosen, either is carried out.
@@ -157,7 +157,7 @@ fun moveOrRemove() {
             while (true) {
                 // User input for targeting counters - they enter the square number containing their chosen counter.
                 showGameBoard()
-                print("Enter the Number of the Square You Want To Move From: ")
+                print("Enter Target Square Number: ".yellow())
                 val chosenSquare = readlnOrNull()?.toIntOrNull()
 
                 // There are so many conditions to validate this - the input needs to be a square on the board containing a counter and there needs to be a valid square to move to
@@ -208,22 +208,20 @@ fun moveOrRemove() {
 fun choosePlayers() {
     // Asks players for their names and stores them!
     while (true) {
-        print("Enter First Player Name: ")
-        println()
+        print("Enter First Player Name: ".bold())
         val playerOne = readlnOrNull()
         if (playerOne != null) {
             playerNames.add(playerOne)
-            println("Welcome, $playerOne")
+            println("Welcome, $playerOne!")
             break
         }
     }
     while (true) {
-        print("Enter Second Player Name: ")
-        println()
+        print("Enter Second Player Name: ".bold())
         val playerTwo = readlnOrNull()
         if (playerTwo != null) {
             playerNames.add(playerTwo)
-            println("Welcome, $playerTwo")
+            println("Welcome, $playerTwo!")
             break
         }
     }
