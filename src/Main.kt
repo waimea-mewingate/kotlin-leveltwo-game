@@ -33,8 +33,12 @@ var gameWon = false
 fun main() {
     //Welcome screen and counter setup on the board. Runs once.
     setupGame()
-    println("Welcome to Pinned!".bold().yellow())
-    println("This is a two-player game. Choose who is who now.")
+    println("╔════════════════════╗"); print("║ ")
+    print("Welcome to Pinned!".bold().yellow()); println(" ║")
+    println("╚════════════════════╝")
+    println("This is a two-player game. Starting player will be chosen randomly.")
+    println("Good Luck!")
+    println("┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈")
     choosePlayers()
     showGameBoard()
 
@@ -43,7 +47,7 @@ fun main() {
 
     //Taking turns (main game body). This should loop until win condition is met
     while (true) {
-        // The game board is shown when performing a turn, so I have not put showGameBoard here.
+        showGameBoard() // It's easier... haha
         print(playerNames[currentPlayer].bold()); println(", it's your go...".yellow())
         moveOrRemove()
         //Check for win!
@@ -58,7 +62,7 @@ fun main() {
     println("Game Finished! Rerun program to play again :)")
     println("Thanks for playing!")
 }
-// End of Main loop. :)
+// End of game. :)
 
 
 
@@ -75,7 +79,7 @@ fun showGameBoard() {
 }
 
 fun setupGame() {
-    //Filling the list
+    //Filling the list. Each item in the list is a square.
     repeat(16) {
         gameBoard.add("")
     }
@@ -107,13 +111,16 @@ fun moveOrRemove() {
     var action: String?
     while (true) {
         // Asks players to choose an action
-        showGameBoard()
         println("Choose an Action".magenta().bold())
         println("(Counters can only be removed from square 1)")
-        print("M".bold().green())
-        println("ove. You can move any counter any number of squares to the left, provided the path is empty. ")
-        print("R".bold().green()); println("emove Counter. This removes a counter from square 1, and can only be chosen when that square is occupied.")
+
+        print("M".bold().green()); println("ove Counter.")
+        println("You can move any counter any number of squares to the left, provided the path is empty.")
+
+        print("R".bold().green()); println("emove Counter.")
+        println("This removes a counter from square 1, and can only be chosen when that square is occupied.")
         println("Removing the black counter '○' wins you the game! ")
+
         print("Choice (M/R): ")
         val turnChoice = readln()
 
@@ -161,10 +168,9 @@ fun moveOrRemove() {
                 val chosenSquare = readlnOrNull()?.toIntOrNull()
 
                 // There are so many conditions to validate this - the input needs to be a square on the board containing a counter and there needs to be a valid square to move to
-                if (chosenSquare != null && chosenSquare in (1..16) && gameBoard[chosenSquare - 1] != "" && gameBoard[chosenSquare - 2] == "") {
+                if (chosenSquare != null && chosenSquare in (2..16) && gameBoard[chosenSquare - 1] != "" && gameBoard[chosenSquare - 2] == "") {
                     println("Moving From Square $chosenSquare")
-                    //Since the user input is local to the 'while' loop, I have created a variable local to the 'moving' section and set it to the input once gained, so I can still use error-checking
-                    // Probably should try to streamline it
+                    //Since the user input is local to the 'while' loop, I have created a variable local to the 'moving' section and set it to the input once gained, so I can still use error-checking.
                     movingFrom = chosenSquare -1
                     break
                 }
@@ -175,16 +181,17 @@ fun moveOrRemove() {
             //It does work! :D
             println("Moving 1 Square Left...")
             while (true) {
-                // Swap counters to move left as the empty squares are "" - still items in the gameboard list
+                // Swap counters to move left as the empty squares are "" - still items in the gameBoard list
                 val temp = gameBoard[movingFrom - 1]
                 gameBoard[movingFrom - 1] = gameBoard[movingFrom]
                 gameBoard[movingFrom] = temp
                 showGameBoard()
-                //Now that they have swapped, if the current counter to be moved is on square 1 (gameBoard[0]) the loop has to be broken else a IndexOutOfBounds error appears
+
+                //Now that they have swapped, if the current counter to be moved is on square 1 (gameBoard[0]) the loop has to be broken else the index is out of bounds
                 if (movingFrom == 1) break
 
                 if (gameBoard[movingFrom - 2] == "") {
-                    // If possible to move left again, the question is posed until the user decides or the move is impossible.
+                    // If possible to move left again, the question is posed until the user decides to exit or the move is impossible.
                     var moveAgain: String?
                     while (true) {
                         println("Move another square? Y/N")
@@ -206,7 +213,7 @@ fun moveOrRemove() {
 
 
 fun choosePlayers() {
-    // Asks players for their names and stores them!
+    // Asks players for their names and stores them! (with error checking)
     while (true) {
         print("Enter First Player Name: ".bold())
         val playerOne = readlnOrNull()
