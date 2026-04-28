@@ -22,14 +22,15 @@
  * * =====================================================================
  */
 
-// The game board stores all the squares. This ends up being "" or one of the counters.
+
 val gameBoard = mutableListOf<String>()
-// Stores the player names in order to refer to them and avoid confusion.
+
 val playerNames = mutableListOf<String>()
-//The win condition, met when the black counter is removed from 'square 1' or gameBoard index 0.
+
 var gameWon = false
 
-//Main function. Contains the basic structure of the game - calls functions to set up, choose player names, and loop through turns. Once "gameWon" is fulfilled, it ends the loop and the game.
+//Main function. Contains the basic structure of the game - calls functions to set up, choose player names, and loop through turns.
+// Once "gameWon" is fulfilled, the game ends.
 fun main() {
     //Welcome screen and counter setup on the board. Runs once.
     setupGame()
@@ -47,10 +48,10 @@ fun main() {
 
     //Taking turns (main game body). This should loop until win condition is met
     while (true) {
-        showGameBoard() // It's easier... haha
+        showGameBoard()
         print(playerNames[currentPlayer].bold()); println(", it's your go...".yellow())
         moveOrRemove()
-        //Check for win!
+
         if (gameWon) break
 
         //Swap player
@@ -67,7 +68,6 @@ fun main() {
 
 
 fun showGameBoard() {
-    //Prints the board squares and fills them with the mutableList "gameBoard".
     println("╒═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╕".green())
     for (i in 0..15) {
         print("│".green()); print(gameBoard[i].padEnd(3))
@@ -75,7 +75,6 @@ fun showGameBoard() {
     println("│".green())
     println("╘═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╧═══╛".green())
     println(" 1   2   3   4   5   6   7   8   9   10  11  12  13  14  15  16")
-    // Squares are numbered ^
 }
 
 fun setupGame() {
@@ -84,7 +83,7 @@ fun setupGame() {
         gameBoard.add("")
     }
     while (true) {
-        //Adding Black Counter - choose a random index - if empty, replace it with the black counter. Then break - we only need one!
+        //Adding the Black Counter
         for (i in 0..gameBoard.size) {
             val randomIndex = gameBoard.indices.random()
             if (gameBoard[randomIndex] == "") gameBoard[randomIndex] = " ○"; break
@@ -110,7 +109,6 @@ fun moveOrRemove() {
     // This is a particularly long function due to the need to carry variables across the different turn actions
     var action: String?
     while (true) {
-        // Asks players to choose an action
         println("Choose an Action".magenta().bold())
         println("(Counters can only be removed from square 1)")
 
@@ -135,7 +133,8 @@ fun moveOrRemove() {
         println("Sorry, Invalid or Unavailable Choice".red())
 
     }
-    // Once an action is successfully chosen, either is carried out.
+
+    //This section of the function performs the chosen action.
     println("Action: $action")
     while (true) {
         //Removing the counter on square 1
@@ -148,7 +147,6 @@ fun moveOrRemove() {
                     break
                 }
 
-                //This is the win condition - removing the black counter signals the game over
                 " ○" -> {
                     gameBoard[0] = ""
                     showGameBoard()
@@ -158,19 +156,19 @@ fun moveOrRemove() {
             }
         }
 
-        //Move function
+        // This section contains choosing the square to move from and moving left one square at a time until moving another square is invalid or moving again is refused.
         if (action == "Move") {
             var movingFrom: Int
             while (true) {
-                // User input for targeting counters - they enter the square number containing their chosen counter.
+
                 showGameBoard()
                 print("Enter Target Square Number: ".yellow())
                 val chosenSquare = readlnOrNull()?.toIntOrNull()
 
-                // There are so many conditions to validate this - the input needs to be a square on the board containing a counter and there needs to be a valid square to move to
+
                 if (chosenSquare != null && chosenSquare in (2..16) && gameBoard[chosenSquare - 1] != "" && gameBoard[chosenSquare - 2] == "") {
                     println("Moving From Square $chosenSquare")
-                    //Since the user input is local to the 'while' loop, I have created a variable local to the 'moving' section and set it to the input once gained, so I can still use error-checking.
+                    //This strange variable dance allows for error-checking outside this loop.
                     movingFrom = chosenSquare -1
                     break
                 }
@@ -181,13 +179,13 @@ fun moveOrRemove() {
             //It does work! :D
             println("Moving 1 Square Left...")
             while (true) {
-                // Swap counters to move left as the empty squares are "" - still items in the gameBoard list
+
+                //Moving involves swapping
                 val temp = gameBoard[movingFrom - 1]
                 gameBoard[movingFrom - 1] = gameBoard[movingFrom]
                 gameBoard[movingFrom] = temp
                 showGameBoard()
 
-                //Now that they have swapped, if the current counter to be moved is on square 1 (gameBoard[0]) the loop has to be broken else the index is out of bounds
                 if (movingFrom == 1) break
 
                 if (gameBoard[movingFrom - 2] == "") {

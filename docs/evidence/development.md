@@ -34,7 +34,7 @@ if (gameWon) break \
 } \
 ### This is what it looks like fixed
 
-![fixedthebug.png](screenshots/fixedthebug.png)
+![fixedthebug.png](screenshots/player-turns-fixed.png)
 
 ---
 
@@ -42,12 +42,12 @@ if (gameWon) break \
 
 It appears that when an incorrect value is input for moving again, the counter moves back/ gets swapped back with the square it came from, as the move function is essentialy swapping the counters. This is shown in the below screenshot- look at the two gameboards. In the first, the counter was on square 13 but is shown here after being moved 1 square left, to square 12. After the response to the Y/N is input as "h", the counter swaps back. 
 
-![screenshot2.png](screenshots/screenshot2.png)
+![](screenshots/strange-move-error.png)
 
 I have fixed this issue by adding error-checking. If the answer is not in "YyNn" the code will simply say "Invalid Input" and ask again. This way, it will only move again if the input is 'y' or 'Y'. 
-![example.png](screenshots/img.png)
+![](screenshots/rejecting-input.png)
 ### Here is the code: 
-![example.png](screenshots/img_1.png)
+![](screenshots/valid-code-boundaryvalues.png)
 
 ---
 
