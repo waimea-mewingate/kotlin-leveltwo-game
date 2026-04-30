@@ -166,4 +166,22 @@ I will test invalid values first
 
 These I expect to be rejected. 
 
-I will then attempt to enter valid data - "Y", and "N". 
+I will then attempt to enter valid data - "Y", and "N". These I expect to be accepted, with Y moving the counter another square left and N ending the turn. 
+
+### Gameplay
+
+When "Move" is initially chosen, the targeted counter should move 1 square left. The same should happen again when 'Y' is selected. \
+The turn should end when either 'N' is selected when move again is asked, or when there is no valid square to move to. 
+
+---
+
+## Gameplay - Counter Removal
+
+When the choice of "remove counter" is selected, the game should remove the counter from square 1 and end the current turn.
+
+---
+
+## Winning
+
+The game should detect a win when the 'black' counter ( ○ ) is removed from the first square. No more turns should be announced, and the game should end. 
+

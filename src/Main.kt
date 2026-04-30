@@ -215,7 +215,7 @@ fun choosePlayers() {
     while (true) {
         print("Enter First Player Name: ".bold())
         val playerOne = readlnOrNull()
-        if (playerOne != null) {
+        if (!playerOne.isNullOrBlank()) {
             playerNames.add(playerOne)
             println("Welcome, $playerOne!")
             break
@@ -224,7 +224,7 @@ fun choosePlayers() {
     while (true) {
         print("Enter Second Player Name: ".bold())
         val playerTwo = readlnOrNull()
-        if (playerTwo != null) {
+        if (!playerTwo.isNullOrBlank()) {
             playerNames.add(playerTwo)
             println("Welcome, $playerTwo!")
             break
