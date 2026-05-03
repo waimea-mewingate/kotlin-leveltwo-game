@@ -192,8 +192,9 @@ fun moveOrRemove() {
                     // If possible to move left again, the question is posed until the user decides to exit or the move is impossible.
                     var moveAgain: String?
                     while (true) {
-                        println("Move another square? Y/N")
+                        print("Move another square? Y/N: ")
                         moveAgain = readlnOrNull()
+                        if (moveAgain!!.isBlank()) moveAgain = null
                         if (moveAgain != null && moveAgain in "YyNn") break
                         println("Invalid Input")
                     }

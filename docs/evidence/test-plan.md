@@ -45,7 +45,7 @@ I will test that the choice to remove a counter when it is present on square 1 i
 ### Test Data To Use
 
 I will attempt to make a valid choice - which to remove a counter is only accepted by the game if the input is **R** (in either lowercase or capital.) \
-I will repeat both choices for both players. 
+I will do this for both players. 
 
 ### Expected Result
 
