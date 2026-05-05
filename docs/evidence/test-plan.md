@@ -92,7 +92,7 @@ The game should reject these examples.
 
 ### Test Data To Use (Valid)
 
-I have four choices that will be accepted in order for the game to progress- the letters 'M' and 'R'- both in lowercase and capital. \
+I have four choices that will be accepted in order for the game to progress - the letters 'M' and 'R'- both in lowercase and capital. \
 The choice to move is only accepted when the input is (either capital or lowercase) **m** - so I will enter these for both players. 
 
 ### Expected Result

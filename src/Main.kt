@@ -2,7 +2,7 @@
  * =====================================================================
  * Programming Project for NCEA Level 2, Standard 91896
  * ---------------------------------------------------------------------
- * Project Name:   200DTD Game- Pinned
+ * Project Name:   200DTD Game - Pinned
  * Project Author: Maia Wingate
  * GitHub Repo:    https://github.com/waimea-mewingate/kotlin-leveltwo-game/tree/main
  * ---------------------------------------------------------------------
@@ -176,9 +176,9 @@ fun moveOrRemove() {
                 // If the input fails the error-check-
                 println("Invalid Input".red())
             }
-            // Making the move function repeat one step at a time was the best way that I could break it down- other tries found in the history of this code all got out of hand for me
+            // Making the move function repeat one step at a time was the best way that I could break it down - other tries all got out of hand for me.
             //It does work! :D
-            println("Moving 1 Square Left...")
+            println("Moving 1 Square Left...".yellow())
             while (true) {
 
                 //Moving involves swapping
@@ -193,11 +193,11 @@ fun moveOrRemove() {
                     // If possible to move left again, the question is posed until the user decides to exit or the move is impossible.
                     var moveAgain: String?
                     while (true) {
-                        print("Move another square? Y/N: ")
+                        print("Move another square? Y/N: ".yellow())
                         moveAgain = readlnOrNull()
                         if (moveAgain!!.isBlank()) moveAgain = null
                         if (moveAgain != null && moveAgain in "YyNn") break
-                        println("Invalid Input")
+                        println("Invalid Input".red())
                     }
                     when (moveAgain) {
                         "y", "Y" -> movingFrom = movingFrom - 1
