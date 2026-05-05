@@ -175,13 +175,18 @@ The turn should end when either 'N' is selected when move again is asked, or whe
 
 ---
 
-## Gameplay - Counter Removal
+## Gameplay
+
+### Game Start/Setup
+
+After player names are selected, the board should show with four white counters and 1 black counter. 
+
+### Counter Removal
 
 When the choice of "remove counter" is selected, the game should remove the counter from square 1 and end the current turn.
 
----
-
-## Winning
+### Winning
 
 The game should detect a win when the 'black' counter ( ○ ) is removed from the first square. No more turns should be announced, and the game should end. 
 
+---

@@ -2,6 +2,9 @@
 
 The test results show the actual outcome of the testing, following the [Test Plan](test-plan.md)
 
+### Any strange marks or flashes in the gif recordings were from my clicking, not any problems with the game.
+I am happy that I have managed to get through this! Testing went as I'd hoped. 
+
 ---
 
 
@@ -46,8 +49,13 @@ I will do this for both players.
 
 ### Result
 
-![](screenshots/choosing-to-remove-playerOne.gif) \
+![](screenshots/choosing-to-remove-playerTwo.gif) \
+
 The game accepted the valid choice. 
+
+---
+
+![](screenshots/counter-removal-and-winning.gif)
 
 ---
 
@@ -70,7 +78,7 @@ I will repeat this for both players.
 ### Result
 
 The game rejected the invalid input. \
-![](screenshots/choosing-to-remove-playerTwo.gif) 
+![](screenshots/choosing-to-remove-playerOne.gif) 
 ---
 ![](screenshots/counter-selection-boundaries-and-invalid-removal-attempt.gif)
 
@@ -196,3 +204,25 @@ The valid inputs were accepted, the invalid rejected, and gameplay as expected. 
 
 ---
 
+## Gameplay 
+
+### Game Start/Setup
+
+The game set up as expected. \
+![](screenshots/player-name-choosing.gif)
+
+### Counter Removal
+
+When the choice of "remove counter" is selected, the game should remove the counter from square 1 and end the current turn. \
+![](screenshots/counter-removal-and-winning.gif)
+
+### Winning
+
+The game should detect a win when the 'black' counter ( ○ ) is removed from the first square. No more turns should be announced, and the game should end. 
+The player whose turn it was should be announced as the winner.
+
+\
+![](screenshots/counter-removal-and-winning.gif) \
+This happened as expected.
+
+---

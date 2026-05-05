@@ -68,6 +68,7 @@ fun main() {
 
 
 fun showGameBoard() {
+    // Self-explanatory :)
     println("╒═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╤═══╕".green())
     for (i in 0..15) {
         print("│".green()); print(gameBoard[i].padEnd(3))
@@ -78,7 +79,7 @@ fun showGameBoard() {
 }
 
 fun setupGame() {
-    //Filling the list. Each item in the list is a square.
+    //Filling the list with blank squares, then placing counters randomly
     repeat(16) {
         gameBoard.add("")
     }
@@ -109,17 +110,17 @@ fun moveOrRemove() {
     // This is a particularly long function due to the need to carry variables across the different turn actions
     var action: String?
     while (true) {
-        println("Choose an Action".magenta().bold())
+        println("Choose an Action".underline().bold())
         println("(Counters can only be removed from square 1)")
 
-        print("M".bold().green()); println("ove Counter.")
+        println("Move Counter:".bold().col(227, 227, 200))
         println("You can move any counter any number of squares to the left, provided the path is empty.")
 
-        print("R".bold().green()); println("emove Counter.")
+        println("Remove Counter.".bold().col(227, 227, 200))
         println("This removes a counter from square 1, and can only be chosen when that square is occupied.")
         println("Removing the black counter '○' wins you the game! ")
 
-        print("Choice (M/R): ")
+        print("Choice (M/R): ".yellow())
         val turnChoice = readln()
 
         action = when (turnChoice) {
@@ -143,7 +144,7 @@ fun moveOrRemove() {
                 " ●" -> {
                     gameBoard[0] = ""
                     showGameBoard()
-                    println("Counter Removed!")
+                    println("Counter Removed!".yellow())
                     break
                 }
 

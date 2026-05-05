@@ -59,20 +59,4 @@ Example description and notes. Example description and notes. Example descriptio
 
 ---
 
-## Date: xx/xx/20xx
-
-Example description and notes. Example description and notes. Example description and notes. Example description and notes. Example description and notes. Example description and notes.
-
-![example.png](screenshots/example.png)
-
----
-
-## Date: xx/xx/20xx
-
-Example description and notes. Example description and notes. Example description and notes. Example description and notes. Example description and notes. Example description and notes.
-
-![example.png](screenshots/example.png)
-
----
-
 
