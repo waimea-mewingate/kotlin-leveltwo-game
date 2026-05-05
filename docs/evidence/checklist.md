@@ -61,8 +61,8 @@ The program stores data using variables, where:
 - [x] Variable **names are well-chosen** (relating to their purpose)
 - [x] Variable names **begin with lowercase**
 - [x] Naming is consistent, either **camelCase or snake_case**
-- [ ] Variables are **scoped appropriately** (global or local to a function)
-- [ ] **Global** variables are only used if **genuinely needed**
+- [x] Variables are **scoped appropriately** (global or local to a function)
+- [x] **Global** variables are only used if **genuinely needed**
 
 The program uses functions appropriately, where:
 - [ ] At least one uses **parameters** to pass data into it
@@ -81,7 +81,7 @@ The program code is well-commented:
 ### Program Testing
 
 The program has been tested using:
-- [ ] A test plan **prepared in advance** of the coding
+- [x] A test plan ~~**prepared in advance** of the coding~~ (prepared in advance of testing)
 - [x] A test plan that **defines test data values** to be used
 - [x] Test values that cover **boundary** (limit / edge) cases
 

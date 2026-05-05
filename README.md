@@ -9,6 +9,7 @@ This is a programming project for **NCEA Level 2**, assessed against standard [9
 The project is written in the [Kotlin](https://kotlinlang.org) programming language and demonstrates a number of **advanced programming techniques**:
 - Modifying data stored in collections
 - Creating functions that use parameters and/or return values
+
 ---
 
 ## Project Files
@@ -34,7 +35,5 @@ The project is written in the [Kotlin](https://kotlinlang.org) programming langu
     - Remove the counter on square 1 (only if a counter is there)
 
 ### Win Condition
-- The player who removes the black counter from square 1 wins
+- The player who removes the black counter from square 1 wins!
 
-### Variant
-- Counters can slide either left or right (but still can't jump other counters)

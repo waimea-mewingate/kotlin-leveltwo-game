@@ -110,6 +110,7 @@ fun moveOrRemove() {
     // This is a particularly long function due to the need to carry variables across the different turn actions
     var action: String?
     while (true) {
+        //Action choosing and simple explanation of the rules.
         println("Choose an Action".underline().bold())
         println("(Counters can only be removed from square 1)")
 
@@ -128,6 +129,7 @@ fun moveOrRemove() {
             "R", "r" -> "Remove"
             else -> null
         }
+        // Removal cannot be performed when no counter is present, else it will essentially be a turn-skip (NOT ALLOWED) :)
         if (action == "Remove" && gameBoard[0] == "") action = null
         if (action != null) break
 
@@ -140,7 +142,9 @@ fun moveOrRemove() {
     while (true) {
         //Removing the counter on square 1
         if (action == "Remove") {
+
             when (gameBoard[0]) {
+
                 " ●" -> {
                     gameBoard[0] = ""
                     showGameBoard()
@@ -148,6 +152,7 @@ fun moveOrRemove() {
                     break
                 }
 
+                //If the removed counter is black - win condition is met!
                 " ○" -> {
                     gameBoard[0] = ""
                     showGameBoard()
@@ -157,7 +162,7 @@ fun moveOrRemove() {
             }
         }
 
-        // This section contains choosing the square to move from and moving left one square at a time until moving another square is invalid or moving again is refused.
+        // This section contains square selection and moving
         if (action == "Move") {
             var movingFrom: Int
             while (true) {
@@ -176,8 +181,8 @@ fun moveOrRemove() {
                 // If the input fails the error-check-
                 println("Invalid Input".red())
             }
-            // Making the move function repeat one step at a time was the best way that I could break it down - other tries all got out of hand for me.
-            //It does work! :D
+
+            // Now to move...
             println("Moving 1 Square Left...".yellow())
             while (true) {
 
@@ -190,7 +195,8 @@ fun moveOrRemove() {
                 if (movingFrom == 1) break
 
                 if (gameBoard[movingFrom - 2] == "") {
-                    // If possible to move left again, the question is posed until the user decides to exit or the move is impossible.
+                    // If possible to move left again, the question is posed and another move performed until the user decides to exit or the move is impossible.
+                    // This makes it easier (for me to code) as only a certain number of squares are processed.
                     var moveAgain: String?
                     while (true) {
                         print("Move another square? Y/N: ".yellow())
@@ -201,7 +207,7 @@ fun moveOrRemove() {
                     }
                     when (moveAgain) {
                         "y", "Y" -> movingFrom = movingFrom - 1
-                        // The above line can be done with a '-=' says the IntelliJ suggestion. Neat trick! Helpful to keep in mind for future reference.
+                        // The above line can be done with a '-=' says the IntelliJ suggestion. Neat trick! Helpful to keep in mind for future projects.
                         "N", "n" -> break
                     }
                 } else break
@@ -233,4 +239,3 @@ fun choosePlayers() {
         }
     }
 }
-
