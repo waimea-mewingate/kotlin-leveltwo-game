@@ -51,12 +51,4 @@ I have fixed this issue by adding error-checking. If the answer is not in "YyNn"
 
 ---
 
-## Date: xx/xx/20xx
-
-Example description and notes. Example description and notes. Example description and notes. Example description and notes. Example description and notes. Example description and notes.
-
-![example.png](screenshots/example.png)
-
----
-
 
